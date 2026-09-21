@@ -11,7 +11,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     q: "How is pricing determined?",
-    a: "Volume, weight, stairs, and how far we carry items to the truck. Send photos and your address for an upfront quote before we load.",
+    a: "Volume, item type, disposal requirements, weight, stairs, and how far we carry items to the truck. Send photos and your address for an upfront quote before we load.",
   },
   {
     q: "Do you remove appliances and furniture?",

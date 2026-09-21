@@ -4,12 +4,13 @@ import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { PricingCard } from "@/components/PricingCard";
 import { PricingEstimator } from "@/components/PricingEstimator";
+import { PRICING } from "@/lib/pricing";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Junk Removal Pricing | Northern Virginia",
   description:
-    "Upfront junk removal pricing in Fairfax and Loudoun County: single items $70–$80, full loads $500–$1,000. Call for same-day pickup.",
+    "Upfront junk removal pricing in Fairfax and Loudoun County: single items from $119, full loads from $699. Same-day when available.",
 };
 
 export default function PricingPage() {
@@ -20,7 +21,8 @@ export default function PricingPage() {
           <p className="text-sm font-bold text-amber-800">Pricing</p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900">Upfront prices. No surprises.</h1>
           <p className="mt-3 max-w-3xl text-lg text-slate-600">
-            Final cost depends on volume, stairs, and how far we carry items. Text photos or call{" "}
+            Final cost depends on volume, item type, disposal requirements, stairs, and how far we carry items. Text
+            photos or call{" "}
             <a className="font-bold text-slate-900" href={`tel:${SITE.phoneTel}`}>
               {SITE.phoneDisplay}
             </a>{" "}
@@ -33,13 +35,14 @@ export default function PricingPage() {
         <div className="grid gap-4 lg:grid-cols-2">
           <PricingCard
             title="Single item pickup"
-            price="$70–$80"
-            description="One mattress, couch, or appliance—we load it and haul it away."
+            price={PRICING.singleItemDisplay}
+            description="One mattress, couch, appliance, or other bulky item—we load it and haul it away."
             bullets={["Fairfax & Loudoun County", "Price locked before we load"]}
+            note="Final price depends on item type, access, and disposal requirements."
           />
           <PricingCard
             title="Full load"
-            price="$500–$1,000"
+            price={PRICING.fullLoadDisplay}
             description="Big cleanouts and full trucks in Northern Virginia."
             bullets={["Priced by space + labor", "You approve before we start"]}
           />

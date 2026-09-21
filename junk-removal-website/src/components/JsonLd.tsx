@@ -1,3 +1,4 @@
+import { PRICING } from "@/lib/pricing";
 import { SITE } from "@/lib/site";
 
 export function JsonLd() {
@@ -9,7 +10,7 @@ export function JsonLd() {
       "Same-day junk removal in Northern Virginia. Serving Fairfax, Loudoun County, and nearby. Fully insured, locally owned.",
     telephone: SITE.phoneTel,
     email: SITE.email,
-    priceRange: "$70–$1000",
+    priceRange: PRICING.priceRangeSchema,
     url: "https://example.com",
     image: "https://example.com/og.jpg",
     areaServed: [

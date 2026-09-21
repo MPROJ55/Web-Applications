@@ -10,8 +10,12 @@ export const SERVICES: ServiceItem[] = [
     slug: "single-item",
     title: "Single-item pickup",
     summary:
-      "One couch, mattress, or appliance—same-day in NOVA when we’re open. Fairfax & Loudoun County.",
-    bullets: ["$70–$80 most single items", "We do the lifting"],
+      "One couch, mattress, appliance, or other bulky item—we load it and haul it away. Fairfax & Loudoun County.",
+    bullets: [
+      "Starting at $119",
+      "We do the lifting",
+      "Final price depends on the item, access, and disposal requirements",
+    ],
   },
   {
     slug: "furniture",
@@ -37,7 +41,7 @@ export const SERVICES: ServiceItem[] = [
     slug: "full-property",
     title: "Full property cleanouts",
     summary: "Estates, downsizing, and rental turnovers with clear communication from walkthrough to haul-away.",
-    bullets: ["Full loads often $500–$1,000 depending on volume"],
+    bullets: ["Starting around $699 depending on volume"],
   },
   {
     slug: "demo-debris",

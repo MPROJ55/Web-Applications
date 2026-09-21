@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 
 import Link from "next/link";
 
+import { interpolateLoadPricing, PRICING } from "@/lib/pricing";
+
 function clamp(n: number, min: number, max: number) {
   return Math.min(max, Math.max(min, n));
 }
@@ -14,21 +16,15 @@ export function PricingEstimator() {
   const [distance, setDistance] = useState(15); // 0 far carry
 
   const estimate = useMemo(() => {
-    const baseMin = 70;
-    const baseMax = 80;
-    const fullMin = 500;
-    const fullMax = 1000;
-
-    const t = loadSize / 100;
-    let low = baseMin + t * (fullMin - baseMin);
-    let high = baseMax + t * (fullMax - baseMax);
+    const { low: baseLow, high: baseHigh } = interpolateLoadPricing(loadSize);
 
     const labor = 1 + (stairs / 100) * 0.22 + (distance / 100) * 0.18;
-    low *= labor;
-    high *= labor;
+    let low = baseLow * labor;
+    let high = baseHigh * labor;
 
-    low = clamp(low, baseMin, fullMax * 1.15);
-    high = clamp(high, baseMax, fullMax * 1.25);
+    const maxHigh = PRICING.fullLoadFrom * 1.35 * labor;
+    low = clamp(low, PRICING.singleItemFrom, maxHigh);
+    high = clamp(high, low, maxHigh);
 
     return {
       low: Math.round(low),

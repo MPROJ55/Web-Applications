@@ -3,9 +3,10 @@ type PricingCardProps = {
   price: string;
   description: string;
   bullets?: string[];
+  note?: string;
 };
 
-export function PricingCard({ title, price, description, bullets }: PricingCardProps) {
+export function PricingCard({ title, price, description, bullets, note }: PricingCardProps) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <div className="flex items-start justify-between gap-4">
@@ -25,6 +26,7 @@ export function PricingCard({ title, price, description, bullets }: PricingCardP
           ))}
         </ul>
       ) : null}
+      {note ? <p className="mt-3 text-xs leading-relaxed text-slate-500">{note}</p> : null}
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { SERVICES } from "@/content/services";
 import { FALLBACK_TESTIMONIALS } from "@/content/testimonials";
+import { PRICING } from "@/lib/pricing";
 import { SITE } from "@/lib/site";
 
 export default function Home() {
@@ -71,15 +72,15 @@ export default function Home() {
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <PricingCard
               title="Single-item pickup"
-              price="$70–$80"
-              description="One sofa, mattress, appliance—we lift it and haul it."
-              bullets={["Fairfax & Loudoun", "Stairs may add labor"]}
+              price={PRICING.singleItemDisplay}
+              description="One mattress, couch, appliance, or other bulky item—we load it and haul it away."
+              bullets={["Fairfax & Loudoun County", "Price locked before we load"]}
             />
             <PricingCard
               title="Full load"
-              price="$500–$1,000"
-              description="Garages, estates, big cleanouts—priced by truck space."
-              bullets={["Photos = faster quotes", "We confirm before we haul"]}
+              price={PRICING.fullLoadDisplay}
+              description="Big cleanouts and full trucks in Northern Virginia."
+              bullets={["Priced by space + labor", "You approve before we start"]}
             />
           </div>
         </div>
