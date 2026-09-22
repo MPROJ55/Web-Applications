@@ -1,19 +1,29 @@
-Put this inside .gitignore:
-
-# Virtual environment
-.venv/
-venv/
-
-# SQLite databases
-*.db
-
-# Python cache
-__pycache__/
-*.pyc
-
 # Environment variables / secrets
 .env
 .env.*
+!.env.example
 
-# VS Code
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS junk
+.DS_Store
+
+# Editor-specific
 .vscode/
+.idea/
