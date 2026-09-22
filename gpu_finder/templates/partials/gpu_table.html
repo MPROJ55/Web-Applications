@@ -1,0 +1,259 @@
+<div>
+
+    <div
+        class="
+            mb-4
+            flex items-center
+            justify-between
+        "
+    >
+
+        <p class="text-sm text-slate-400">
+
+            {{ gpus | length }}
+
+            GPU price{% if gpus | length != 1 %}s{% endif %}
+
+            found
+
+        </p>
+
+
+        <button
+            hx-get="/gpus"
+            hx-target="#gpu-results"
+            hx-include="#gpu-filters"
+
+            class="
+                rounded-lg
+                border border-slate-700
+                bg-slate-800
+                px-3 py-2
+                text-sm font-medium
+                text-slate-200
+                transition
+                hover:border-indigo-500
+                hover:bg-slate-700
+            "
+        >
+            Refresh prices
+        </button>
+
+    </div>
+
+
+    {% if gpus %}
+
+
+    <div
+        class="
+            overflow-hidden
+            rounded-2xl
+            border border-slate-800
+            bg-slate-900/70
+            shadow-xl
+        "
+    >
+
+        <div class="overflow-x-auto">
+
+            <table class="min-w-full">
+
+                <thead
+                    class="
+                        border-b border-slate-800
+                        bg-slate-900
+                        text-left
+                        text-xs
+                        uppercase
+                        tracking-wider
+                        text-slate-500
+                    "
+                >
+
+                    <tr>
+
+                        <th class="px-6 py-4">
+                            GPU
+                        </th>
+
+                        <th class="px-6 py-4">
+                            Provider
+                        </th>
+
+                        <th class="px-6 py-4">
+                            Pricing
+                        </th>
+
+                        <th class="px-6 py-4">
+                            Price / Hour
+                        </th>
+
+                        <th class="px-6 py-4">
+                            Updated
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody class="divide-y divide-slate-800">
+
+
+                    {% for gpu in gpus %}
+
+
+                    <tr
+                        class="
+                            transition
+                            hover:bg-slate-800/60
+                        "
+                    >
+
+                        <td class="px-6 py-5">
+
+                            <div
+                                class="
+                                    font-semibold
+                                    text-white
+                                "
+                            >
+                                {{ gpu.gpu }}
+                            </div>
+
+                        </td>
+
+
+                        <td
+                            class="
+                                px-6 py-5
+                                text-slate-300
+                            "
+                        >
+                            {{ gpu.provider }}
+                        </td>
+
+
+                        <td class="px-6 py-5">
+
+                            <span
+                                class="
+                                    rounded-full
+                                    bg-indigo-500/10
+                                    px-3 py-1
+                                    text-sm
+                                    text-indigo-300
+                                "
+                            >
+
+                                {{ gpu.pricing_type or "Standard" }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td class="px-6 py-5">
+
+                            <span
+                                class="
+                                    text-lg
+                                    font-bold
+                                    text-emerald-400
+                                "
+                            >
+
+                                ${{
+                                    "%.2f"
+                                    | format(gpu.price_per_hour)
+                                }}
+
+                            </span>
+
+                            <span
+                                class="
+                                    text-sm
+                                    text-slate-500
+                                "
+                            >
+                                / hr
+                            </span>
+
+                        </td>
+
+
+                        <td
+                            class="
+                                px-6 py-5
+                                text-sm
+                                text-slate-500
+                            "
+                        >
+
+                            {{ gpu.source_updated_at or "Unknown" }}
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    {% else %}
+
+
+    <div
+        class="
+            rounded-2xl
+            border border-dashed
+            border-slate-700
+            bg-slate-900/50
+            px-6 py-16
+            text-center
+        "
+    >
+
+        <div class="text-4xl">
+            🎮
+        </div>
+
+
+        <h2
+            class="
+                mt-4
+                text-lg font-semibold
+                text-white
+            "
+        >
+            No GPU prices yet
+        </h2>
+
+
+        <p
+            class="
+                mt-2
+                text-sm
+                text-slate-400
+            "
+        >
+            Pricing data will appear here
+            after the first API synchronization.
+        </p>
+
+    </div>
+
+
+    {% endif %}
+
+</div>

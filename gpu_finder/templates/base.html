@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        GPU Price Tracker
+        {% endblock %}
+    </title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+
+    <!-- Our CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/app.css') }}"
+    >
+</head>
+
+
+<body
+    class="
+        min-h-screen
+        bg-slate-950
+        text-slate-100
+        antialiased
+    "
+>
+
+    <!-- Background glow -->
+    <div
+        class="
+            pointer-events-none
+            fixed inset-0
+            overflow-hidden
+        "
+    >
+        <div
+            class="
+                absolute left-1/2 top-0
+                h-96 w-96
+                -translate-x-1/2
+                rounded-full
+                bg-indigo-600/10
+                blur-3xl
+            "
+        ></div>
+    </div>
+
+
+    <main
+        class="
+            relative mx-auto
+            max-w-7xl
+            px-4 py-10
+            sm:px-6
+            lg:px-8
+        "
+    >
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', path='js/app.js') }}"
+    ></script>
+
+</body>
+
+</html>
